@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Department of Computer Science</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #222;
+        }
+
+
+        /* HEADER */
+        header {
+            background-color: #243b61;
+            color: white;
+            width: 100%;
+            padding: 14px 0;
+        }
+
+        .header-container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .college-name h1 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .college-name p {
+            margin: 5px 0 0;
+            font-size: 11px;
+        }
+
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 10px 10px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #243b61;
+            border-radius: 3px;
+        }
+
+
+        /* MAIN */
+        main {
+            width: 90%;
+            margin: 18px auto 30px;
+        }
+
+
+        /* HOME SECTION */
+        #home {
+            background-color: #2d476f;
+            color: white;
+            text-align: center;
+            padding: 38px 20px;
+            margin-bottom: 25px;
+        }
+
+        #home h2 {
+            color: white;
+            font-size: 26px;
+            margin: 0 0 20px;
+        }
+
+        #home h2::after {
+            display: none;
+        }
+
+        #home p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* GENERAL SECTIONS */
+        section {
+            margin-bottom: 25px;
+            scroll-margin-top: 20px;
+        }
+
+        section h2 {
+            color: #243b61;
+            font-size: 21px;
+            margin: 0 0 15px;
+        }
+
+        section h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            background-color: #b8860b;
+            margin-top: 7px;
+        }
+
+        section h3 {
+            color: #243b61;
+        }
+
+        section p,
+        section li {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* DEPARTMENT INTRODUCTION */
+        #about {
+            background-color: white;
+            padding: 20px;
+        }
+
+
+        /* HIGHLIGHTS */
+        .highlights {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #d2d2d2;
+            border-radius: 5px;
+            padding: 15px;
+            flex: 1;
+            min-height: 120px;
+        }
+
+        .card h3 {
+            color: #243b61;
+            font-size: 15px;
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            font-size: 13px;
+            margin: 0;
+        }
+
+
+        /* FACULTY */
+        #faculty {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .faculty-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .faculty-card {
+            border: 1px solid #d2d2d2;
+            border-radius: 5px;
+            padding: 18px;
+            background-color: #fafafa;
+        }
+
+        .faculty-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 17px;
+            color: #243b61;
+        }
+
+        .faculty-card p {
+            margin: 8px 0;
+        }
+
+        /* COURSES */
+        #courses {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .semester-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .semester h3 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #243b61;
+        }
+
+        .semester ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+
+        .semester li {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* TIMETABLE */
+        #timetable {
+            background-color: white;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #243b61;
+            color: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+
+        /* ACHIEVEMENTS */
+        #achievements {
+            background-color: white;
+            padding: 20px;
+        }
+
+
+        /* EVENTS */
+        #events {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .event-card {
+            border-left: 4px solid #b8860b;
+            background-color: #fafafa;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .event-card h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+
+        .event-card p {
+            margin: 0;
+        }
+
+
+        /* CONTACT */
+        #contact {
+            background-color: white;
+            padding: 20px;
+        }
+
+
+        input {
+            width: 30%;
+            padding: 10px;
+            margin: 7px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+        }
+
+
+
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #243b61;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #b8860b;
+        }
+
+
+        /* FOOTER */
+        footer {
+            width: 100%;
+            background-color: #243b61;
+            color: white;
+            text-align: center;
+            padding: 16px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-container">
+
+            <div class="college-name">
+                <h1>Department of Computer Science</h1>
+                <p>Alliance University </p>
+            </div>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#faculty">Faculty</a>
+                <a href="#courses">Courses</a>
+                <a href="#timetable">Timetable</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#events">Events</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- HOME -->
+        <section id="home">
+
+            <article>
+                <h2>Welcome to the Computer Science Department</h2>
+
+                <p>We help students build a strong foundation in programming,systems and problem solving, and get them
+                    ready for thetechnology industry through practical learning, labs and projects. </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about">
+
+            <h2>Department Introduction</h2>
+
+            <p> The Department of Computer Science provides students with a mix of theoretical and practical knowledge.
+                Students learn important subjects such as programming, databases, web development and other computer
+                science technologies.
+            </p>
+
+
+            <h3>Vision</h3>
+            <p> To provide quality education and develop skilled computer science professionals. </p>
+
+            <h3>Mission</h3>
+
+            <p> To provide students with knowledge and practical skills in computer science and technology.</p>
+
+
+            <h3>Objectives</h3>
+
+            <ul>
+                <li>Improve programming skills.</li>
+                <li>Develop problem solving skills.</li>
+                <li>Provide practical knowledge.</li>
+            </ul>
+
+        </section>
+
+
+
+        <!-- HIGHLIGHT -->
+        <section>
+
+            <h2>Highlights</h2>
+
+            <div class="highlights">
+
+                <article class="card">
+                    <h3>120+ Students</h3>
+                    <p> Students are currently enrolled and learning different areas of computer science. </p>
+                </article>
+
+
+                <article class="card">
+                    <h3>8 Faculty Members</h3>
+                    <p> Experienced teaching staff handling core and elective subjects. </p>
+                </article>
+
+
+                <article class="card">
+                    <h3>Modern Labs</h3>
+                    <p> Computer labs are used for practical classes and student projects. </p>
+                </article>
+
+
+                <article class="card">
+                    <h3>Active Coding Club</h3>
+                    <p> Students practice programming and work on small coding projects. </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FACULTY -->
+        <section id="faculty">
+
+            <h2>Faculty</h2>
+
+            <div class="faculty-container">
+
+                <article class="faculty-card">
+                    <h3>Durga Bravish</h3>
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Advanced Data Science Techniques
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Abhishek A</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Advanced UI and UX Design for Developers
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Dharshane B Nagarajan</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Communication and Life Skills - 1
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Pramisha A</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Discrete Structures
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Veera Raghav Kathula</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Front-End Frameworks and Technologies
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Kushal</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Mastering Python: From Basics to Advanced
+                    </p>
+
+                </article>
+
+
+                <article class="faculty-card">
+
+                    <h3>Ajith Pandian</h3>
+
+                    <p><strong>Designation:</strong> Faculty Member</p>
+
+                    <p>
+                        <strong>Subject:</strong>
+                        Problem Solving through Aptitude - 1
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- COURSES -->
+        <section id="courses">
+
+            <h2>Courses</h2>
+
+            <div class="semester-container">
+
+
+                <!-- SEMESTER I -->
+
+                <div class="semester">
+
+                    <h3>Semester I</h3>
+
+                    <ul>
+                        <li>Discrete Structures</li>
+                        <li>Communication and Life Skills - 1</li>
+                        <li>Problem Solving through Aptitude - 1</li>
+                        <li>Mastering Python: From Basics to Advanced</li>
+                        <li>Advanced Data Science Techniques</li>
+                        <li>Advanced UI and UX Design for Developers</li>
+                        <li>Front-End Frameworks and Technologies</li>
+                    </ul>
+
+                </div>
+
+
+                <!-- SEMESTER II -->
+
+                <div class="semester">
+
+                    <h3>Semester II</h3>
+
+                    <ul>
+                        <li>Applied Statistics</li>
+                        <li>Communication and Life Skills - 2</li>
+                        <li>Problem Solving through Aptitude - 2</li>
+                        <li>Advanced Data Structures and Algorithms</li>
+                        <li>Java Object-Oriented Design and Programming</li>
+                        <li>Database Design and Implementation</li>
+                        <li>Machine Learning Theory and Practice</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIME TABLE -->
+        <section id="timetable">
+
+            <h2>Class Timetable</h2>
+
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Class 1</th>
+                    <th>Class 2</th>
+                    <th>Class 3</th>
+                    <th>Class 4</th>
+                </tr>
+
+                <tr>
+                    <td>Monday</td>
+                    <td>Discrete Structures</td>
+                    <td>Mastering Python</td>
+                    <td>Advanced Data Science Techniques</td>
+                    <td>Communication and Life Skills - 1</td>
+                </tr>
+
+                <tr>
+                    <td>Tuesday</td>
+                    <td>Advanced UI and UX Design</td>
+                    <td>Problem Solving through Aptitude - 1</td>
+                    <td>Discrete Structures</td>
+                    <td>Front-End Frameworks and Technologies</td>
+                </tr>
+
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Mastering Python</td>
+                    <td>Advanced Data Science Techniques</td>
+                    <td>Communication and Life Skills - 1</td>
+                    <td>Advanced UI and UX Design</td>
+                </tr>
+
+                <tr>
+                    <td>Thursday</td>
+                    <td>Discrete Structures</td>
+                    <td>Problem Solving through Aptitude - 1</td>
+                    <td>Front-End Frameworks and Technologies</td>
+                    <td>Mastering Python</td>
+                </tr>
+
+                <tr>
+                    <td>Friday</td>
+                    <td>Advanced Data Science Techniques</td>
+                    <td>Advanced UI and UX Design</td>
+                    <td>Discrete Structures</td>
+                    <td>Front-End Frameworks and Technologies</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements">
+
+            <h2>Achievements</h2>
+
+            <ul>
+                <li> Students participated in coding competitions and technical events. </li>
+                <li> Faculty members participated in research and academic activities.</li>
+                <li> The department conducted workshops and technical programs. </li>
+                <li> Students completed different academic and mini projects. </li>
+            </ul>
+
+        </section>
+
+
+        <!-- EVENTS -->
+        <section id="events">
+
+            <h2>Events</h2>
+
+            <article class="event-card">
+
+                <h3>Web Development Workshop</h3>
+                <p> A workshop was conducted to introduce students to HTML, CSS and basic web development. </p>
+
+            </article>
+
+
+            <article class="event-card">
+
+                <h3>Technical Seminar</h3>
+                <p> A seminar was organized to discuss new technologies and their use in computer science. </p>
+
+            </article>
+
+
+            <article class="event-card">
+
+                <h3>Hackathon</h3>
+                <p> Students participated in a coding event and worked together to solve programming problems. </p>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- CONTACTS -->
+        <section id="contact">
+
+            <h2>Contact Us</h2>
+            <p> <strong>Address:</strong> Computer Science Department, University Campus </p>
+            <p> <strong>Email:</strong> csdepartment@example.com </p>
+            <p> <strong>Phone:</strong> +91 123456789 </p>
+
+
+            <h3>Contact Form</h3>
+
+            <form>
+                <input type="text" placeholder="Enter your name" required>
+                <input type="email" placeholder="Enter your email" required>
+                <textarea placeholder="Enter your message" required></textarea>
+                <button type="submit">Submit </button>
+            </form>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p> &copy 2026 Department of Computer Science, Alliance University </p>
+    </footer>
+
+</body>
+
+</html>
