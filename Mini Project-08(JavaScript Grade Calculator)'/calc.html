@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5eadf;
+        }
+
+        .calculator {
+            width: 430px;
+            max-width: 92%;
+            padding: 30px;
+            background: #fff8f0;
+            border: 1px solid #ead5c5;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(122, 78, 65, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #b84c74;
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8c6b63;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .subjects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .subject label {
+            display: block;
+            color: #704f49;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .subject input {
+            width: 100%;
+            padding: 12px;
+
+            background: #fffdf9;
+            color: #543d39;
+
+            border: 1px solid #dfc5b8;
+            border-radius: 9px;
+
+            outline: none;
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .subject input::placeholder {
+            color: #b69a90;
+        }
+
+        .subject input:focus {
+            border-color: #d85b8c;
+            box-shadow: 0 0 0 3px rgba(216, 91, 140, 0.12);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #d17198;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #c44777;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 18px rgba(216, 91, 140, 0.25);
+        }
+
+        #result {
+            margin-top: 22px;
+            padding: 18px;
+            background: #fce8ee;
+            border: 1px solid #edc1d0;
+            border-radius: 12px;
+            text-align: center;
+            color: #704f49;
+            line-height: 1.9;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            color: #a18378;
+            font-size: 12px;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>Grade Calculator</h2>
+        <div class="subtitle">
+            Enter your marks for each subject
+        </div>
+
+        <div class="subjects">
+            <div class="subject">
+                <label for="fft">FFT</label>
+                <input type="number" id="fft" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="ads">ADS</label>
+                <input type="number" id="ads" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="bad">BAD</label>
+                <input type="number" id="bad" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="pst">PST</label>
+                <input type="number" id="pst" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="cls">CLS</label>
+                <input type="number" id="cls" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="aui">AUI</label>
+                <input type="number" id="aui" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+            <div class="subject">
+                <label for="dst">DST</label>
+                <input type="number" id="dst" min="0" max="100" placeholder="Enter marks">
+            </div>
+
+        </div>
+
+        <button onclick="calculateGrade()">
+            Calculate Grade
+        </button>
+
+        <div id="result">
+            Your result will appear here
+        </div>
+
+        <div class="footer">
+            Grade Calculator • Student Utility
+        </div>
+
+    </div>
+
+    <script>
+
+        function calculateGrade() {
+            const subjects = [
+                "fft",
+                "ads",
+                "bad",
+                "pst",
+                "cls",
+                "aui",
+                "dst"
+            ];
+
+            let total = 0;
+            for (let subject of subjects) {
+                const input = document.getElementById(subject);
+                const marks = Number(input.value);
+
+                if (input.value === "" || marks < 0 || marks > 100) {
+                    document.getElementById("result").innerHTML =
+                        " Please enter valid marks between 0 and 100.";
+                    return;
+                }
+
+                total += marks;
+            }
+
+            const percentage = total / subjects.length;
+
+            let grade;
+            if (percentage >= 90) {
+                grade = "A+";
+            }
+            else if (percentage >= 80) {
+                grade = "A";
+            }
+            else if (percentage >= 70) {
+                grade = "B";
+            }
+            else if (percentage >= 60) {
+                grade = "C";
+            }
+            else if (percentage >= 40) {
+                grade = "D";
+            }
+            else {
+                grade = "F";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Total Marks: " + total + " / 700<br>" +
+                "Percentage: " + percentage.toFixed(2) + "%<br>" +
+                "Grade: " + grade;
+        }
+
+    </script>
+
+</body>
+
+</html>
