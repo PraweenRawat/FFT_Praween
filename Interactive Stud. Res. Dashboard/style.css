@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(203, 196, 196);
+}
+
+.header {
+    background-color: #243f5c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 35px;
+}
+
+.header p {
+    margin: 8;
+    font-size: 17px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #ccd3da;
+}
+
+.card h2 {
+    color: #193b5c;
+    margin-top: 0;
+}
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#searchBox {
+    width: 90%;
+    padding: 14px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 14px 25px;
+    color: white;
+    background-color: #287be0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1765c0;
+}
+
+#studentList {
+    margin-top: 15px;
+}
+
+.student {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.student:hover {
+    background-color: #eef5ff;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.detail-box input {
+    padding: 10px;
+    width: 90%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #243f5c;
+    color: white;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.box {
+    flex: 1;
+    text-align: center;
+    background-color: #eef5ff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #d2ddec;
+}
+
+.box h3 {
+    color: #243f5c;
+    margin: 5px;
+}
+
+.box p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pass {
+    color: green;
+}
+
+.fail {
+    color: red;
+}

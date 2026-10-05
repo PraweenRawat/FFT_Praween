@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Dashboard </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- header section -->
+    <div class="header">
+        <h1>Student Result Dashboard</h1>
+        <p>View and manage student academic performance</p>
+    </div>
+
+    <div class="container">
+        <!-- search student card -->
+        <div class="card">
+            <h2>Search Student</h2>
+
+            <div class="search-box">
+                <input type="text" id="searchBox" placeholder="Enter student name.." onkeyup="searchStudent()">
+                <button onclick="clearSearch()">Clear</button>
+            </div>
+
+            <div id="studentList"></div>
+        </div>
+
+        <!-- student Details -->
+        <div class="card">
+            <h2>Student Details</h2>
+            <div class="details">
+
+                <div class="detail-box">
+                    <label>Student Name</label>
+                    <input type="text" id="studentName" readonly>
+                </div>
+
+                <div class="detail-box">
+                    <label>Roll Number </label>
+                    <input type="text" id="rollno" readonly>
+                </div>
+
+                <div class="detail-box">
+                    <label>Course </label>
+                    <input type="text" id="course" readonly>
+                </div>
+
+                <div class="detail-box">
+                    <label>Semester </label>
+                    <input type="text" id="semester" readonly>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- subject wise makrs -->
+        <div class="card">
+            <h2>Subject Wise Marks</h2>
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                </tr>
+                <tbody id="marksTable"></tbody>
+            </table>
+        </div>
+
+        <!-- performance summary -->
+        <div class="card">
+            <h2>Performance Summary</h2>
+            <div class="result">
+                <div class="box">
+                    <h3>Total</h3>
+                    <p id="total">0</p>
+                </div>
+
+                <div class="box">
+                    <h3>Average</h3>
+                    <p id="avg">0</p>
+                </div>
+
+                <div class="box">
+                    <h3>Percentage</h3>
+                    <p id="percentage">0%</p>
+                </div>
+
+                <div class="box">
+                    <h3>Grade</h3>
+                    <p id="grade">---</p>
+                </div>
+
+                <div class="box">
+                    <h3>Result</h3>
+                    <p id="result">---</p>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // student data
+        var students = [
+            {
+                name: "Praween Singh Rawat",
+                roll: "086",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [78, 65, 72, 81, 69, 78, 56]
+            },
+            {
+                name: "Ashraj Singh Rana",
+                roll: "043",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [80, 75, 70, 85, 72, 56, 89]
+            },
+            {
+                name: "Anvitha S",
+                roll: "022",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [78, 65, 72, 81, 69, 78, 87]
+            },
+            {
+                name: "Tanishq Mittal",
+                roll: "028",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [78, 65, 72, 81, 61, 88, 71]
+            },
+            {
+                name: "Aditiya Dange",
+                roll: "087",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [92, 88, 90, 85, 94, 66, 87]
+            },
+            {
+                name: "Ummar Sayyad",
+                roll: "090",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [55, 62, 58, 60, 64, 67, 87]
+            },
+            {
+                name: "Harsh Hirpara",
+                roll: "018",
+                course: "MCA",
+                semester: "1st Semester",
+                marks: [85, 78, 82, 90, 88, 76, 65]
+            }
+        ];
+
+        // subjects
+        var subjects = [
+            "Front-End Frameworks and Technologies",
+            "Advanced UI and UX Design for Developers",
+            "Advanced Data Science Techniques",
+            "Discrete Structures",
+            "Mastering Python: From Basics to Advanced",
+            "Problem solving through Aptitude - 1",
+            "Communication and Life Skills-1"
+        ];
+
+        // search student
+
+        function searchStudent() {
+            var text = document.getElementById("searchBox").value.toLowerCase();
+            var list = document.getElementById("studentList");
+            list.innerHTML = "";
+
+            var i = 0;
+
+            while (i < students.length) {
+                var name = students[i].name.toLocaleLowerCase();
+
+                if (name.includes(text) && text != "") {
+                    var div = document.createElement("div");
+                    div.className = "student";
+
+                    div.innerHTML = "<b>" + students[i].name + "</b> - Roll No: " + students[i].roll;
+
+                    // storing student number in div
+                    div.setAttribute("data-index", i);
+
+                    // when name is clicked  selectstudent  will run 
+                    div.onclick = function () {
+                        var index = this.getAttribute("data-index");
+                        selectStudent(index);
+                    };
+
+                    list.appendChild(div);
+
+                }
+                i++;
+            }
+        }
+
+        // select student
+        function selectStudent(index) {
+            var student = students[index];
+
+            // selected stud. name inside the search student box..
+            document.getElementById("searchBox").value = student.name;
+
+            // remove the suggestion after selecting..
+            document.getElementById("studentList").innerHTML = "";
+
+            showResult(student);
+        }
+        // Show result
+        function showResult(student) {
+            document.getElementById("studentName").value = student.name;
+            document.getElementById("rollno").value = student.roll;
+            document.getElementById("course").value = student.course;
+            document.getElementById("semester").value = student.semester;
+
+            var table = document.getElementById("marksTable");
+            table.innerHTML = "";
+            var total = 0;
+
+            var i = 0;
+
+            while (i < subjects.length) {
+                var row = table.insertRow();
+                var subject = row.insertCell(0);
+                var marks = row.insertCell(1);
+
+                subject.innerHTML = subjects[i];
+                marks.innerHTML = student.marks[i];
+
+                total += student.marks[i];
+
+                i++;
+            }
+
+            // to find average
+            var average = total / subjects.length;
+
+            // to find %age
+            var percentage = (total / 700) * 100;
+
+            // to find Grade
+            var grade;
+
+            if (percentage >= 90) {
+                grade = "A+";
+            }
+            else if (percentage >= 80) {
+                grade = "A";
+            }
+            else if (percentage >= 70) {
+                grade = "B";
+            }
+            else if (percentage >= 60) {
+                grade = "C";
+            }
+            else if (percentage >= 50) {
+                grade = "D";
+            }
+            else {
+                grade = "F";
+            }
+
+            // display
+            document.getElementById("total").innerHTML = total;
+            document.getElementById("avg").innerHTML = average.toFixed(2);
+            document.getElementById("percentage").innerHTML = percentage.toFixed(2) + "%";
+            document.getElementById("grade").innerHTML = grade;
+
+            // pass or fail
+            var status = document.getElementById("result");
+
+
+            if (percentage >= 40) {
+                status.innerHTML = "PASS";
+                status.className = "pass";
+            }
+            else {
+                status.innerHTML = "FAIL";
+                status.className = "fail";
+            }
+        }
+
+        // clear btn
+        function clearSearch() {
+            document.getElementById("searchBox").value = "";
+            document.getElementById("studentList").innerHTML = "";
+
+            document.getElementById("studentName").value = "";
+            document.getElementById("rollno").value = "";
+            document.getElementById("course").value = "";
+            document.getElementById("semester").value = "";
+
+            document.getElementById("marksTable").innerHTML = "";
+
+            document.getElementById("total").innerHTML = "0";
+            document.getElementById("avg").innerHTML = "0";
+            document.getElementById("percentage").innerHTML = "0%";
+            document.getElementById("grade").innerHTML = "---";
+            document.getElementById("result").innerHTML = "---";
+
+        }
+
+    </script>
+</body>
+
+</html>
